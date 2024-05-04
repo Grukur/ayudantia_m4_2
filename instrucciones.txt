@@ -1,0 +1,41 @@
+para la instalacion de babel necesitan correo los siguientes comandos
+
+en terminal:
+
+npm install --save-dev @babel/core @babel/cli @babel/preset-env
+
+luego necesitaras crear el archivo llamado babel.config.json, el cual tiene que contener lo siguente:
+
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "edge": "17",
+                    "firefox": "60",
+                    "chrome": "67",
+                    "safari": "11.1"
+                },
+                "useBuiltIns": "usage",
+                "corejs": "3.6.4",
+                "forceAllTransforms": true
+            }
+        ]
+    ]
+}
+
+luego en tu package.json, tienes que agregar las siguientes lineas:
+
+"type": "module",
+
+"scripts": {
+    "build": "babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+type module te permite usar las exportaciones e importaciones
+
+para poder ejecutar babel, tendras que crear una carpeta llamada src, donde 
+tendras que alojar los archivos que desees convertir con babel.
+en script -> build te premite usar el comando npm run build, que ejecutara babel
